@@ -3,6 +3,7 @@ const timeEl = document.getElementsByClassName("time")[0];
 const hourEl = document.getElementsByClassName("hours")[0];
 const minsEl = document.getElementsByClassName("minutes")[0];
 const secsEl = document.getElementsByClassName("seconds")[0];
+const sliderEl = document.getElementsByClassName("slider")[0];
 
 const months = ['Sausio', 'Vasario', 'Kovo', 'Balandžio', 'Gegužės', 'Birželio',
     'Liepos', 'Rugpjūčio', 'Rugsėjo', 'Spalio', 'Lapkričio', 'Gruodžio'];
@@ -41,3 +42,30 @@ function addZero(t) {
     return t;
 }
 clock();
+
+// Pomodoro funkcija
+let isPomodoro = false;
+
+sliderEl.addEventListener('click', () => {
+    isPomodoro ? isPomodoro = false : isPomodoro = true;
+    sliderEl.classList.toggle('active');
+//  timeEl.classList.toggle('work');
+    isPomodoro ? work() : stop();
+});
+
+function chill() {
+    timeEl.classList.remove('work');
+    timeEl.classList.add('chill');
+    isPomodoro ? setTimeout(work, 3000) : stop();
+}
+
+function work() {
+    timeEl.classList.remove('chill');
+    timeEl.classList.add('work');
+    isPomodoro ? setTimeout(chill, 10000) : stop();
+}   
+
+function stop() {
+    timeEl.classList.remove('work');
+    timeEl.classList.remove('chill'); 
+}

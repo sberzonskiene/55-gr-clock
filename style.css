@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 30px;
 }
 
 .clock-digital {
@@ -31,6 +32,7 @@ body {
     background-color: #fff;
     border-radius: 100px;
     position: relative;
+  /*overflow: hidden;*/
 }
 .clock-analog > * {
     transform-origin: bottom;
@@ -59,3 +61,48 @@ body {
     top: calc(50% - 90px);
     left: calc(50% - 2px); 
 }
+
+/* Pomodoro */
+.pomodoro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.slider {
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 11px;
+    width: 51px;
+    transition: all 200ms;
+}
+.dot {
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    transition: all 200ms;
+}
+.label {
+    font-family: sans-serif;
+}
+
+.active {
+    background-color: red;
+}
+
+.active .dot {
+    background-color: #fff;
+    transform: translateX(30px);
+}
+.work {
+    color: red;
+}
+.chill {
+    color: rgb(7, 241, 7);
+}
+/*.pomo {
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+    transform: skewX(-30deg);
+ } */
