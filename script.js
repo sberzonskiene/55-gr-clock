@@ -4,6 +4,7 @@ const hourEl = document.getElementsByClassName("hours")[0];
 const minsEl = document.getElementsByClassName("minutes")[0];
 const secsEl = document.getElementsByClassName("seconds")[0];
 const sliderEl = document.getElementsByClassName("slider")[0];
+const pomoBgEl = document.getElementsByClassName("pomo-bg")[0];
 
 const months = ['Sausio', 'Vasario', 'Kovo', 'Balandžio', 'Gegužės', 'Birželio',
     'Liepos', 'Rugpjūčio', 'Rugsėjo', 'Spalio', 'Lapkričio', 'Gruodžio'];
@@ -49,23 +50,35 @@ let isPomodoro = false;
 sliderEl.addEventListener('click', () => {
     isPomodoro ? isPomodoro = false : isPomodoro = true;
     sliderEl.classList.toggle('active');
-//  timeEl.classList.toggle('work');
+    show(false);
+    pomoBgEl.classList.add('show');
     isPomodoro ? work() : stop();
 });
 
 function chill() {
     timeEl.classList.remove('work');
     timeEl.classList.add('chill');
-    isPomodoro ? setTimeout(work, 3000) : stop();
+    show(true);
+    isPomodoro ? setTimeout(work, 5 * 60 *1000) : stop();
 }
 
 function work() {
     timeEl.classList.remove('chill');
     timeEl.classList.add('work');
-    isPomodoro ? setTimeout(chill, 10000) : stop();
+    isPomodoro ? setTimeout(chill, 25 * 60 * 1000) : stop();
 }   
 
 function stop() {
     timeEl.classList.remove('work');
-    timeEl.classList.remove('chill'); 
+    timeEl.classList.remove('chill');
+    pomoBgEl.classList.remove('show'); 
+}
+
+function show(afterFive) {
+    const now = new Date();
+    let min = now.getMinutes(); 
+    afterFive ? min +=5 : min;
+    min > 59 ? min -= 60: min;
+    const deg = min * 6 + 90;
+    pomoBgEl.style.transform = 'rotate(' + deg + 'deg)';
 }

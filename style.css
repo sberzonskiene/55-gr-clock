@@ -32,14 +32,14 @@ body {
     background-color: #fff;
     border-radius: 100px;
     position: relative;
-  /*overflow: hidden;*/
+    overflow: hidden;
 }
 .clock-analog > * {
     transform-origin: bottom;
 }
 .hours {
     background-color: #000;
-    width: 10px;
+    width: 8px;
     height: 70px;
     position: absolute;
     top: calc(50% - 70px);
@@ -47,7 +47,7 @@ body {
 }    
 .minutes {
     background-color: #000;;
-    width: 6px;
+    width: 5px;
     height: 80px;
     position: absolute;
     top: calc(50% - 80px);
@@ -55,7 +55,7 @@ body {
 }
 .seconds {
     background-color: orangered;
-    width: 4px;
+    width: 3px;
     height: 90px;
     position: absolute;
     top: calc(50% - 90px);
@@ -100,9 +100,25 @@ body {
 .chill {
     color: rgb(7, 241, 7);
 }
-/*.pomo {
-    background-color: aqua;
+.pomo-bg {
     width: 100px;
     height: 100px;
-    transform: skewX(-30deg);
- } */
+    position: relative;
+    transform-origin: bottom right;
+    transform: rotate(90deg);
+    display: none;
+}
+.pomo-bg > div {
+    width: 100px;
+    height: 100px;background-color: salmon;
+    position: absolute;
+}
+div.bg2 {
+    transform-origin: bottom right;
+    transform: rotate(60deg);
+}
+
+.show {
+    display: block;
+}
+ 
